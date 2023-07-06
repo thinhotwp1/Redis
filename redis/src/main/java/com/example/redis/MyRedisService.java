@@ -15,11 +15,15 @@ public class MyRedisService {
     }
 
     public void saveValue(String key, Object value) {
-        redisTemplate.opsForValue().set(key, value);
+        // Chuyển về dạng byte array để truy xuất nhanh hơn, đặc biệt là những value dài
+        byte[] valueBytes = value.toString().getBytes();
+        redisTemplate.opsForValue().set(key, valueBytes);
     }
 
     public Object getValue(String key) {
-        return redisTemplate.opsForValue().get(key);
+        byte[] storedValueBytes = (byte[]) redisTemplate.opsForValue().get(key);
+        assert storedValueBytes != null;
+        return new String(storedValueBytes);
     }
     
     public boolean deleteValue(String key){
