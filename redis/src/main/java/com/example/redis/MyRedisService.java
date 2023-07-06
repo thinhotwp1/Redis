@@ -22,6 +22,9 @@ public class MyRedisService {
 
     public Object getValue(String key) {
         byte[] storedValueBytes = (byte[]) redisTemplate.opsForValue().get(key);
+        // assert storedValueBytes != null; là một câu lệnh kiểm tra (assertion) trong Java để kiểm tra
+        // một điều kiện và đảm bảo rằng nó phải là đúng (true). Nếu điều kiện kiểm tra trả về giá trị sai
+        // (false), một AssertionError sẽ được ném ra và chương trình sẽ dừng lại.
         assert storedValueBytes != null;
         return new String(storedValueBytes);
     }
