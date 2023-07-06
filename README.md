@@ -18,3 +18,5 @@ Giả sử bạn có một ứng dụng web lưu trữ thông tin người dùng
 Khi sử dụng chuỗi (string) để lưu trữ key trong Redis, ví dụ user:123, Redis sẽ phải xử lý từng ký tự trong chuỗi khi thực hiện các phép so sánh, tìm kiếm và thao tác khác. Việc xử lý các ký tự Unicode hoặc UTF-8 có thể tốn thời gian và tài nguyên.
 Tuy nhiên, nếu bạn sử dụng byte array để lưu trữ key, ví dụ user:123 được chuyển đổi thành một mảng byte như sau: [117, 115, 101, 114, 58, 49, 50, 51]. Khi Redis thực hiện các phép so sánh và tìm kiếm, nó có thể làm việc trực tiếp với các giá trị byte mà không cần xử lý các ký tự Unicode hoặc UTF-8. Việc này giúp tăng tốc độ xử lý.
 1 2 3 ứng với 49 50 51 
+
+Branch main sẽ xử lý bình thường, branch byte_array_value sẽ chuyển value thành byte_array để tăng tốc độ redis, khuyến nghị sử dụng 
