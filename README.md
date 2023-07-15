@@ -1,6 +1,8 @@
 # Redis
 
-🍹 Link drive: https://docs.google.com/document/d/1pSP7Ld5igxDaYSvLPVsdvCzzB7vwaI9jUPe7N0L7nZI/edit?usp=sharing
+🍹 Link drive: [https://docs.google.com/document/d/1pSP7Ld5igxDaYSvLPVsdvCzzB7vwaI9jUPe7N0L7nZI/edit?usp=sharing
+](https://drive.google.com/drive/folders/1l6ZkFrGb0lQzyCg6vtejB387pmeUSTEc?usp=sharing)
+
 
 Redis là 1 database phụ được cài trực tiếp trên server, để sử dụng redis cần cài và kết nối từ application:
 
