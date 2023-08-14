@@ -17,10 +17,8 @@ public class MyRedisService {
     }
 
     public boolean saveValue(String key, Object value) {
-        // Chuyển về dạng byte array để truy xuất nhanh hơn, đặc biệt là những value dài
-        byte[] valueBytes = value.toString().getBytes();
-        redisTemplate.opsForValue().set(key, valueBytes,30, TimeUnit.DAYS);
-        // lưu cache vào redis trong 30 ngày, sau 30 ngày tự xóa
+        redisTemplate.opsForValue().set(key, value,30, TimeUnit.SECONDS);
+        // lưu cache vào redis trong 30 giây, sau 30 giây tự xóa, ở đây lưu giây để dễ test, thực tế thì có thể để theo nhu cầu
         return getValue(key).toString().equals(value.toString());
     }
 
