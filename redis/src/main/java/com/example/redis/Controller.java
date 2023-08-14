@@ -12,8 +12,8 @@ public class Controller {
     MyRedisService redisService;
 
     @GetMapping("/save-key")
-    public void saveKeyValue(){
-        redisService.saveValue("key_sercert","123456");
+    public boolean saveKeyValue(){
+        return redisService.saveValue("key_sercert","123456");
     }
 
     @GetMapping("/get-key")

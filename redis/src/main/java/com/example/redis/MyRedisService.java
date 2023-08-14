@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.TimeUnit;
+
 @Service
 public class MyRedisService {
 
@@ -14,10 +16,12 @@ public class MyRedisService {
         this.redisTemplate = redisTemplate;
     }
 
-    public void saveValue(String key, Object value) {
+    public boolean saveValue(String key, Object value) {
         // Chuyển về dạng byte array để truy xuất nhanh hơn, đặc biệt là những value dài
         byte[] valueBytes = value.toString().getBytes();
-        redisTemplate.opsForValue().set(key, valueBytes);
+        redisTemplate.opsForValue().set(key, valueBytes,30, TimeUnit.DAYS);
+        // lưu cache vào redis trong 30 ngày, sau 30 ngày tự xóa
+        return getValue(key).toString().equals(value.toString());
     }
 
     public Object getValue(String key) {
